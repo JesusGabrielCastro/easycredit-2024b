@@ -1,0 +1,10 @@
+{% if products %}
+<ul>
+    {%for product in products%}
+        <li> {{product.name}} - {{product.price}} </li>
+    {% endfor %}
+    
+</ul>
+{%else%}
+    <p> No Products </p>
+{% endif %}
