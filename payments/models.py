@@ -8,7 +8,7 @@ class Payment(models.Model):
         ('delayed', 'Delayed'),
     ]
 
-    credit = models.ForeignKey(Credit, on_delete=models.CASCADE)
+    credit = models.ForeignKey(Credit, on_delete=models.RESTRICT)
     normal_payment = models.DecimalField(max_digits=10, decimal_places=2)
     due_in = models.DateField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')

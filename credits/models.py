@@ -10,10 +10,12 @@ class Credit(models.Model):
         ('rejected', 'Rejected'),
     ]
 
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.RESTRICT)
+    product = models.ForeignKey(Product, on_delete=models.RESTRICT)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='started')
+    debt = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_payments = models.IntegerField(default=1)
 
     def __str__(self):
         return f'Credit for {self.client} - {self.product}'
